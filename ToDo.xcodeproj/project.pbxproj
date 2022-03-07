@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75597D0227D5E9C100798B88 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75597D0127D5E9C100798B88 /* SwipeTableViewController.swift */; };
 		75A952A627D0670F00FD3543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A952A527D0670F00FD3543 /* AppDelegate.swift */; };
 		75A952A827D0670F00FD3543 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A952A727D0670F00FD3543 /* SceneDelegate.swift */; };
 		75A952AA27D0670F00FD3543 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A952A927D0670F00FD3543 /* ToDoListViewController.swift */; };
@@ -23,6 +24,7 @@
 		5C8C451825725EBD04131ADC /* Pods_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D21A4246A2FC8CC11E5C70E /* Pods-ToDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDo.debug.xcconfig"; path = "Target Support Files/Pods-ToDo/Pods-ToDo.debug.xcconfig"; sourceTree = "<group>"; };
 		6B3B69101C5769FCBE011474 /* Pods-ToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDo.release.xcconfig"; path = "Target Support Files/Pods-ToDo/Pods-ToDo.release.xcconfig"; sourceTree = "<group>"; };
+		75597D0127D5E9C100798B88 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		75A952A227D0670F00FD3543 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A952A527D0670F00FD3543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A952A727D0670F00FD3543 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				75A952A927D0670F00FD3543 /* ToDoListViewController.swift */,
 				75D3D2E127D4A7F800EF537F /* CategoryTableViewController.swift */,
+				75597D0127D5E9C100798B88 /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				75A952AA27D0670F00FD3543 /* ToDoListViewController.swift in Sources */,
 				75D3D2E227D4A7F800EF537F /* CategoryTableViewController.swift in Sources */,
 				75A952A627D0670F00FD3543 /* AppDelegate.swift in Sources */,
+				75597D0227D5E9C100798B88 /* SwipeTableViewController.swift in Sources */,
 				75DE919427D4D69B0058FAD8 /* TodoModel.swift in Sources */,
 				75A952A827D0670F00FD3543 /* SceneDelegate.swift in Sources */,
 				75DE919627D4D6A80058FAD8 /* Category.swift in Sources */,
@@ -402,7 +406,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3NXT996AXQ;
+				DEVELOPMENT_TEAM = U2YFMPU5ZC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ToDoRealm;
@@ -411,12 +415,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eclidse.ToDoRealm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.techbuddies.ToDoRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -432,7 +437,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3NXT996AXQ;
+				DEVELOPMENT_TEAM = U2YFMPU5ZC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ToDoRealm;
@@ -441,12 +446,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eclidse.ToDoRealm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.techbuddies.ToDoRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

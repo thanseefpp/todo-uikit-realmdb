@@ -11,6 +11,8 @@ import RealmSwift
 
 class Category : Object {
     @objc dynamic var name : String = ""
+//    @objc dynamic var descData : String = ""
+    @objc dynamic var colorpicked : String = ""
     
     //relationship creating to the category table.
     let items = List<TodoModel>()

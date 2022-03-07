@@ -1,16 +1,32 @@
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
-class CategoryTableViewController: UITableViewController {
+class CategoryTableViewController: SwipeTableViewController {
     // db initialising
     let realm = try! Realm()
     
+    @IBOutlet var tableview: UITableView!
     //dynamic query store data type variable.
     var categoryField: Results<Category>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.setStatusBarStyle(UIStatusBarStyleContrast)
+//        self.navigationController?.setThemeUsingPrimaryColor(.green, with: .dark)
+//        
+//        print(Realm.Configuration.defaultConfiguration.fileURL as Any)
         loadData()
+        tableView.rowHeight = 80.0
+        tableView.separatorColor = .none
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar else {fatalError("navigation controller property not accessible")}
+        if let navbarColour = UIColor(hexString: "EFFFFD") {
+            navBar.backgroundColor = navbarColour
+            navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navbarColour, returnFlat: true)]
+//            self.navigationController?.hidesNavigationBarHairline = true
+        }
     }
     
     //MARK: - TableView DataSource Methods
@@ -22,32 +38,45 @@ class CategoryTableViewController: UITableViewController {
     
     // Provide a cell object for each row.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Fetch a cell of the appropriate type.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        // Configure the cell’s contents.
-        cell.textLabel?.text = categoryField?[indexPath.row].name ?? "No Category added"
-        
+        // calling cellfor row from swipetableview controller
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if let category = categoryField?[indexPath.row] {
+            
+            // assinging text and desc from both field to cellsfields.
+            cell.textLabel?.text = category.name
+            
+            guard let CategoryColor = UIColor(hexString: category.colorpicked) else { fatalError("color not getting error")}
+            //cell.detailTextLabel?.text = categoryField?[indexPath.row].descData ?? "no descrption added"
+            cell.backgroundColor = CategoryColor
+            cell.textLabel?.textColor = ContrastColorOf(CategoryColor, returnFlat: true)
+        }
         return cell
     }
     
     //MARK: - add new categories
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
         //created a variable to store data from alertbox
         var alertTextField = UITextField()
-        
+//        var secondAlertText = UITextField()
         //alert triger
         let alert = UIAlertController(title: "Add Category", message: "Add new category for items", preferredStyle: .alert)
         
         //alert box action
         let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
             //this place only execute when the user press the add item button
-            
+            let randomColorPicked = UIColor.randomFlat().hexValue()
             //in realm db we can direcly initilise object with just class name
             let newCategory = Category()
-            newCategory.name = alertTextField.text!
-            self.save(category: newCategory)
+            if alertTextField.text != "" {
+                newCategory.name = alertTextField.text!
+                newCategory.colorpicked = randomColorPicked
+                //newCategory.descData = secondAlertText.text!
+                self.save(category: newCategory)
+            }else{
+                alert.endAppearanceTransition()
+            }
+            
         }
         //action
         alert.addAction(action)
@@ -57,6 +86,10 @@ class CategoryTableViewController: UITableViewController {
             addTextField.placeholder = "create new category"
             alertTextField = addTextField
         }
+//        alert.addTextField { (addTextField) in
+//            addTextField.placeholder = "create description"
+//            secondAlertText = addTextField
+//        }
         // to show the aler message with animation.
         present(alert, animated: true, completion: nil)
     }
@@ -68,6 +101,7 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //this method is used to go next segue by the identifier name.
         performSegue(withIdentifier: "goToItems", sender: self)
+        tableview.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,7 +112,7 @@ class CategoryTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             //assigning selected category to a category field value.
             destinationVC.selectedCategory = categoryField?[indexPath.row]
-//            print(destinationVC)
+            //            print(destinationVC)
         }
     }
     
@@ -99,8 +133,24 @@ class CategoryTableViewController: UITableViewController {
     }
     
     func loadData(){
+        
         //query to fetch items in this table.
         categoryField = realm.objects(Category.self)
         tableView.reloadData()
     }
+    
+    //MARK: - swipe delet function override from super call
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let itemDelete = self.categoryField?[indexPath.row] {
+            do {
+                try self.realm.write({
+                    self.realm.delete(itemDelete)
+                })
+            }catch{
+                print("Error during item deleting \(error)")
+            }
+        }
+    }
 }
+
