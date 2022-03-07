@@ -16,6 +16,7 @@ class CategoryTableViewController: SwipeTableViewController {
 //        self.navigationController?.setThemeUsingPrimaryColor(.green, with: .dark)
 //        
 //        print(Realm.Configuration.defaultConfiguration.fileURL as Any)
+        self.view.backgroundColor = UIColor(hexString: "EFFFFD")
         loadData()
         tableView.rowHeight = 80.0
         tableView.separatorColor = .none

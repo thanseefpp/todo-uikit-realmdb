@@ -34,7 +34,7 @@ class ToDoListViewController: SwipeTableViewController {
             guard let navBar = navigationController?.navigationBar else {fatalError("navigation controller property not accessible")}
             
             if let navbarColour = UIColor(hexString: colorHex) {
-//                navBar.backgroundColor = navbarColour
+                self.view.backgroundColor = navbarColour
                 navBar.backgroundColor = navbarColour
                 navBar.tintColor = ContrastColorOf(navbarColour, returnFlat: true)
                 navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navbarColour, returnFlat: true)]
