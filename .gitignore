@@ -1,0 +1,8 @@
+.DS_Store
+*.DS_Store
+Pods
+*Pods
+/Pods
+Pods/Realm/core
+*Pods/Realm/core
+Pods/Realm/core/
