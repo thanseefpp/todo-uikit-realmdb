@@ -18,13 +18,21 @@ pod init
 platform :ios, '12.0'
   pod 'RealmSwift', '~>10'
 ```
+4. add SwipeCellKit to pod
 
-4. pod install command execute to install the pod file
+```
+pod 'SwipeCellKit'
+```
+5. add ChameleonFramework to get multiple color to your project and make application colorful.
+```
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
+```
+6. pod install command execute to install the pod file
 ```
 pod install
 ```
 
-5. open new xcworkspace file to start your work.
+7. open new xcworkspace file to start your work.
 
 
 link to official realm doc 👉🏻 https://docs.mongodb.com/realm/sdk/swift/install/
