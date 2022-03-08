@@ -36,3 +36,6 @@ pod install
 
 
 link to official realm doc 👉🏻 https://docs.mongodb.com/realm/sdk/swift/install/
+
+![todo](https://user-images.githubusercontent.com/62167887/157314714-9a3b3837-b87a-4329-a962-c7c25fc04c22.gif)
+
